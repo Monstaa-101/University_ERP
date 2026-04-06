@@ -49,12 +49,13 @@ public class StudentFeesDAO {
             ps3.setString(2, semester);
             ps3.setInt(3, feeTypeId);
 
-            if (referenceId != null) {
-                ps3.setString(4, referenceId);
-            } else {
+            if (referenceId == null) {
                 ps3.setNull(4, java.sql.Types.VARCHAR);
+            } else {
+                ps3.setString(4, referenceId);
             }
             ps3.setDouble(5, amount);
+            System.out.println("DEBUG → " + studentId + " | " + semester + " | " + feeTypeId + " | " + referenceId + " | " + amount);
             ps3.executeUpdate();
             System.out.println("Fee added successfully.");
 
